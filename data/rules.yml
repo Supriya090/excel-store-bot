@@ -1,0 +1,28 @@
+version: "3.1"
+
+rules:
+  - rule: Say goodbye anytime the user says goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: Say 'I am a bot' anytime the user challenges
+    steps:
+      - intent: bot_challenge
+      - action: utter_iamabot
+
+  # - rule: Say add data in the excel sheet
+  #   steps:
+  #     - intent: add_data
+  #     - action: information_form
+  #     - active_loop: information_form
+
+  # - rule: Save data in the excel sheet
+  #   condition:
+  #     - active_loop: information_form
+  #   steps:
+  #     - action: information_form
+  #     - active_loop: null
+  #     - slot_was_set:
+  #         - requested_slot: null
+  #     - action: utter_submit

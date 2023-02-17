@@ -1,0 +1,80 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - bot_challenge
+  - add_data
+
+entities:
+  - number
+  - email
+
+slots:
+  name:
+    type: any
+    mappings:
+      - type: from_text
+  number:
+    type: any
+    mappings:
+      - type: from_entity
+        entity: number
+  email:
+    type: any
+    mappings:
+      - type: from_entity
+        entity: email
+  occupation:
+    type: any
+    mappings:
+      - type: from_text
+
+responses:
+  utter_greet:
+    - text: "Hey! How are you?"
+
+  utter_goodbye:
+    - text: "Bye"
+
+  utter_ask_name:
+    - text: "May I know your name please?"
+
+  utter_ask_number:
+    - text: "May I know your phone number please?"
+
+  utter_ask_email:
+    - text: "May I know your email please?"
+
+  utter_ask_occupation:
+    - text: "May I know your occupation please?"
+
+  # utter_submit:
+  #   - text: "Your information is saved."
+
+  utter_iamabot:
+    - text: "I am a bot, powered by Rasa."
+
+actions:
+  - utter_greet
+  - utter_goodbye
+  - utter_ask_name
+  - utter_ask_number
+  - utter_ask_email
+  - utter_ask_occupation
+  - utter_iamabot
+  - action_save_data
+
+forms:
+  information_form:
+    required_slots:
+      - name
+      - number
+      - email
+      - occupation
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

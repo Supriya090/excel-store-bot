@@ -1,0 +1,23 @@
+version: "3.1"
+
+stories:
+  - story: happy path
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - story: store path affirm
+    steps:
+      - intent: add_data
+      - action: information_form
+      - active_loop: information_form
+      - intent: affirm
+      - action: action_save_data
+
+  - story: store path deny
+    steps:
+      - intent: add_data
+      - action: information_form
+      - active_loop: information_form
+      - intent: deny
+      - action: utter_goodbye

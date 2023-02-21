@@ -14,23 +14,35 @@ entities:
 
 slots:
   name:
-    type: any
+    type: text
     mappings:
       - type: from_text
+        conditions:
+          - active_loop: information_form
+            requested_slot: name
   number:
-    type: any
+    type: text
     mappings:
       - type: from_entity
         entity: number
+        conditions:
+          - active_loop: information_form
+            requested_slot: number
   email:
     type: any
     mappings:
       - type: from_entity
         entity: email
+        conditions:
+          - active_loop: information_form
+            requested_slot: email
   occupation:
-    type: any
+    type: text
     mappings:
       - type: from_text
+        conditions:
+          - active_loop: information_form
+            requested_slot: occupation
 
 responses:
   utter_greet:
@@ -43,7 +55,7 @@ responses:
     - text: "May I know your name please?"
 
   utter_ask_number:
-    - text: "May I know your phone number please?"
+    - text: So {name}, May I know your phone number please?
 
   utter_ask_email:
     - text: "May I know your email please?"
@@ -51,8 +63,8 @@ responses:
   utter_ask_occupation:
     - text: "May I know your occupation please?"
 
-  # utter_submit:
-  #   - text: "Your information is saved."
+  utter_confirmation:
+    - text: "Here is the information that you provided. Do you want to save it? \nName: {name}, \nMobile Number: {number}, \nEmail Address: {email}, \nOccupation: {occupation}"
 
   utter_iamabot:
     - text: "I am a bot, powered by Rasa."
@@ -65,6 +77,7 @@ actions:
   - utter_ask_email
   - utter_ask_occupation
   - utter_iamabot
+  - utter_confirmation
   - action_save_data
 
 forms:

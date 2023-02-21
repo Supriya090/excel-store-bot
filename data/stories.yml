@@ -11,6 +11,18 @@ stories:
       - intent: add_data
       - action: information_form
       - active_loop: information_form
+      - slot_was_set:
+          - requested_slot: name
+      - slot_was_set:
+          - requested_slot: number
+      - slot_was_set:
+          - requested_slot: email
+      - slot_was_set:
+          - requested_slot: occupation
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: utter_confirmation
       - intent: affirm
       - action: action_save_data
 
@@ -19,5 +31,17 @@ stories:
       - intent: add_data
       - action: information_form
       - active_loop: information_form
+      - slot_was_set:
+          - requested_slot: name
+      - slot_was_set:
+          - requested_slot: number
+      - slot_was_set:
+          - requested_slot: email
+      - slot_was_set:
+          - requested_slot: occupation
+      - slot_was_set:
+          - requested_slot: null
+      - active_loop: null
+      - action: utter_confirmation
       - intent: deny
       - action: utter_goodbye

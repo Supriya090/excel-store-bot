@@ -11,18 +11,18 @@ rules:
       - intent: bot_challenge
       - action: utter_iamabot
 
-  # - rule: Say add data in the excel sheet
-  #   steps:
-  #     - intent: add_data
-  #     - action: information_form
-  #     - active_loop: information_form
+  - rule: Activate Form
+    steps:
+      - intent: add_data
+      - action: information_form
+      - active_loop: information_form
 
-  # - rule: Save data in the excel sheet
-  #   condition:
-  #     - active_loop: information_form
-  #   steps:
-  #     - action: information_form
-  #     - active_loop: null
-  #     - slot_was_set:
-  #         - requested_slot: null
-  #     - action: utter_submit
+  - rule: Save data in the excel sheet
+    condition:
+      - active_loop: information_form
+    steps:
+      - action: information_form
+      - active_loop: null
+      - slot_was_set:
+          - requested_slot: null
+      - action: utter_confirmation

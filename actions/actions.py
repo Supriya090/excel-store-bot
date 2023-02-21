@@ -39,10 +39,10 @@ class FormDataCollect():
     def required_slots(tracker: "Tracker") -> List[Text]:
         return ["name","number","email", "occupation"]
 
-    def submit(self, dispatcher:"CollectingDispatcher", tracker:"Tracker", domain: Dict[Text, Any]) -> List[EventType]:
-        dispatcher.utter_message("Here is the information that you provided. Do you want to save it? \nName: {0}, \nMobile Number: {1}, \nEmail Address: {2}, \nOccupation: {3}".format(
-            tracker.get_slot("name"), 
-            tracker.get_slot("number"), 
-            tracker.get_slot("email"), 
-            tracker.get_slot("occupation")))
+    def run(self, dispatcher:"CollectingDispatcher", tracker:"Tracker", domain: Dict[Text, Any]) -> List[EventType]:
+        dispatcher.utter_message(response = "utter_confirmation", 
+            name=tracker.get_slot("name"), 
+            number = tracker.get_slot("number"), 
+            email=  tracker.get_slot("email"), 
+            occupation = tracker.get_slot("occupation"))
         return []
